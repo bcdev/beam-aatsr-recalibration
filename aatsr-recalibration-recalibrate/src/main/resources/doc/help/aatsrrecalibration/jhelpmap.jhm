@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<!DOCTYPE map PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN" "http://java.sun.com/products/javahelp/map_1_0.dtd">
+<map version="1.0">
+  <mapID target="add" url="index.html"/>
+  <mapID target="sum.scope" url="ch01.html"/>
+  <mapID target="sum.references" url="ch02.html"/>
+  <mapID target="sum.aatsrrecal" url="ch03.html"/>
+  <mapID target="sum.aatsrrecal.refl" url="ch03.html#sum.aatsrrecal.refl"/>
+  <mapID target="sum.aatsrrecal.refl.nonlinearity" url="ch03.html#sum.aatsrrecal.refl.nonlinearity"/>
+  <mapID target="sum.aatsrrecal.refl.removeexist" url="ch03.html#sum.aatsrrecal.refl.removeexist"/>
+  <mapID target="sum.aatsrrecal.refl.addnew" url="ch03.html#sum.aatsrrecal.refl.addnew"/>
+  <mapID target="ddpm.appendixa" url="ch04.html"/>
+</map>

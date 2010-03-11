@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN" "http://java.sun.com/products/javahelp/toc_1_0.dtd">
+<toc version="1.0">
+  <tocitem target="add" text="AATSR Recalibration">
+    <tocitem target="sum.scope" text="SCOPE"/>
+    <tocitem target="sum.references" text="REFERENCES"/>
+    <tocitem target="sum.aatsrrecal" text="AATSR Recalibration">
+      <tocitem target="sum.aatsrrecal.refl" text="Recalibration of AATSR Reflectances">
+        <tocitem target="sum.aatsrrecal.refl.nonlinearity" text="Nonlinearity Correction for the 1.6um channel"/>
+        <tocitem target="sum.aatsrrecal.refl.removeexist" text="Removal of Existing Long-Term Drift"/>
+        <tocitem target="sum.aatsrrecal.refl.addnew" text="Application of new Long-Term Drift"/>
+      </tocitem>
+    </tocitem>
+    <tocitem target="ddpm.appendixa" text="APPENDIX A"/>
+  </tocitem>
+</toc>

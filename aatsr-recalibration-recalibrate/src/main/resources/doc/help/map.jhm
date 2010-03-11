@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE map
+        PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN"
+        "http://java.sun.com/products/javahelp/map_2_0.dtd">
+
+<map version="2.0">
+    <mapID target="aatsrRecalibration" url="aatsrrecalibration/AATSRRecalibration.html"/>
+    <mapID target="aatsrRecalibrationIndex" url="aatsrrecalibration/index.html"/>
+    <mapID target="aatsrRecalibrationScope" url="aatsrrecalibration/ch01.html"/>
+    <mapID target="aatsrRecalibrationReferences" url="aatsrrecalibration/ch02.html"/>
+    <mapID target="aatsrRecalibrationGui" url="aatsrrecalibration/ch03.html"/>
+    <mapID target="aatsrRecalibrationAppendixA" url="aatsrrecalibration/ch04.html"/>
+</map>

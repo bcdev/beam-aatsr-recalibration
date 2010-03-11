@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+        "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+        [
+                <!ENTITY ch01     SYSTEM "ch01-scope.xml">                
+				<!ENTITY ch02     SYSTEM "ch02-references.xml">
+				<!ENTITY ch03     SYSTEM "ch03-sum.xml">
+				<!ENTITY ch04     SYSTEM "ch04-appendixa.xml">
+                ]>
+
+<book id="add">
+    <title>AATSR Recalibration</title>
+
+    <bookinfo>
+        <issuenum revision="1">1.0</issuenum>
+        <date>28 October 2009</date>
+
+        <pubsnumber>Version 1.0</pubsnumber>
+
+        <author>
+            <firstname>Olaf</firstname>
+            <surname>Danne</surname>
+
+            <affiliation>
+                <orgname>Brockmann Consult GmbH</orgname>
+                <address>
+                    <street>Max-Planck-Str 2</street>
+                    <postcode>D-21502</postcode>
+                    <city>Geesthacht</city>
+                    <country>Germany</country>
+                </address>
+            </affiliation>
+            <email>olaf.danne@brockmann-consult.de</email>
+        </author>
+
+        <pubdate>28 October 2009</pubdate>
+
+        <copyright>
+            <year>2009</year>
+            <holder>Brockmann Consult GmbH</holder>
+        </copyright>
+
+        <legalnotice>
+            <para>
+            </para>
+        </legalnotice>
+
+        <revhistory>
+			<revision>
+                <revnumber>1.0</revnumber>
+                <date>28/10/09</date>
+                <authorinitials>O. Danne</authorinitials>
+                <revdescription>
+                    <para>
+                        Initial release.
+                    </para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </bookinfo>
+
+    <!-- External entity refs -->
+	
+    &ch01;
+	&ch02;
+    &ch03;
+	&ch04;
+
+</book>
