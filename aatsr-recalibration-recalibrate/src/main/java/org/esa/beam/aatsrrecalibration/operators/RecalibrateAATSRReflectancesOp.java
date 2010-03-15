@@ -64,35 +64,35 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
     private File userDriftTablePath;
 
     @Parameter(defaultValue = "true",
-               label = "Recalibrate Nadir 1600")
+               label = "Recalibrate nadir reflectance at 1600nm")
     boolean recalibrateNadir1600;
 
     @Parameter(defaultValue = "true",
-               label = "Recalibrate Nadir 870")
+               label = "Recalibrate nadir reflectance at 870nm")
     boolean recalibrateNadir0870;
 
     @Parameter(defaultValue = "true",
-               label = "Recalibrate Nadir 670")
+               label = "Recalibrate nadir reflectance at 670nm")
     boolean recalibrateNadir0670;
 
     @Parameter(defaultValue = "true",
-               label = "Recalibrate Nadir 550")
+               label = "Recalibrate nadir reflectance at 550nm")
     boolean recalibrateNadir0550;
 
     @Parameter(defaultValue = "true",
-               label = "Recalibrate Forward 1600")
+               label = "Recalibrate forward reflectance at 1600nm")
     boolean recalibrateFward1600;
 
     @Parameter(defaultValue = "true",
-               label = "Recalibrate Forward 870")
+               label = "Recalibrate forward reflectance at 870nm")
     boolean recalibrateFward0870;
 
     @Parameter(defaultValue = "true",
-               label = "Recalibrate Forward 670")
+               label = "Recalibrate forward reflectance at 670nm")
     boolean recalibrateFward0670;
 
     @Parameter(defaultValue = "true",
-               label = "Recalibrate Forward 550")
+               label = "Recalibrate forward reflectance at 550nm")
     boolean recalibrateFward0550;
 
     //    private static final String INVALID_EXPRESSION = "l1_flags.INVALID or l1_flags.LAND_OCEAN";
