@@ -110,6 +110,7 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
     private String sensingStart;
 
     private Recalibration recalibration;
+    private boolean isRecalibrated;
 
     @Override
     public void initialize() throws OperatorException {
@@ -155,9 +156,10 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
         ProductUtils.copyMetadata(sourceProduct, targetProduct);
         setFlagBands();
 
-        // flag target product as 'RECALIBRATED' in metadata
-        MetadataElement mph = targetProduct.getMetadataRoot().getElement("MPH");
-        mph.setAttributeString("RECALIBRATED", "YES");
+        MetadataElement mphSource = sourceProduct.getMetadataRoot().getElement("MPH");
+        isRecalibrated = (mphSource.getAttribute("RECALIBRATED") != null &&
+                mphSource.getAttributeString("RECALIBRATED") != null &&
+                mphSource.getAttributeString("RECALIBRATED").equals("YES"));
 
 //        BandArithmeticOp bandArithmeticOp =
 //            BandArithmeticOp.createBooleanExpressionBand(INVALID_EXPRESSION, sourceProduct);
@@ -261,7 +263,7 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
                     }
                     pm.worked(1);
                 }
-            } else if (isTargetBandSelected(targetBand) && isTargetBandValid(targetBand)) {
+            } else if (!isRecalibrated && isTargetBandSelected(targetBand) && isTargetBandValid(targetBand)) {
                 // apply recalibration
 
 //				Tile isInvalid = getSourceTile(invalidBand, rectangle, pm); // TODO if necessary
@@ -313,6 +315,9 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
                     }
                     pm.worked(1);
                 }
+                // flag target product as 'RECALIBRATED' in metadata
+                MetadataElement mph = targetProduct.getMetadataRoot().getElement("MPH");
+                mph.setAttributeString("RECALIBRATED", "YES");
             } else {
                 // band is either:
                 //		- brightness temperature
@@ -329,6 +334,9 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
                 }
             }
         } catch (Exception e) {
+            // flag target product as 'FAILED' in metadata
+            MetadataElement mph = targetProduct.getMetadataRoot().getElement("MPH");
+            mph.setAttributeString("RECALIBRATED", "FAILED");
             throw new OperatorException("AATSR Recalibration Failed: \n" + e.getMessage(), e);
         } finally {
             pm.done();
