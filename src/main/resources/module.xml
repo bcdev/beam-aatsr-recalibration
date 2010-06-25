@@ -1,7 +1,7 @@
 <module>
     <manifestVersion>1.0.0</manifestVersion>
-    <symbolicName>aatsr-recalibration-recalibrate</symbolicName>
-    <version>1.1-SNAPSHOT</version>
+    <symbolicName>beam-aatsr-recalibration</symbolicName>
+    <version>1.1</version>
     <name>AATSR Recalibration</name>
     <description>AATSR Recalibration</description>
 
@@ -44,7 +44,7 @@
     <extension point="beam-ui:helpSets">
         <helpSet>
             <parent>beam-help</parent>
-            <path>doc/help/aatsr-recalibration.hs</path>
+            <path>doc/help/aatsr-recalibration.hs</path>                            
         </helpSet>
     </extension>
 
