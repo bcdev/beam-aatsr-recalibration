@@ -1,9 +1,11 @@
 <module>
     <manifestVersion>1.0.0</manifestVersion>
     <symbolicName>beam-aatsr-recalibration</symbolicName>
-    <version>1.1</version>
+    <version>1.1.1</version>
     <name>AATSR Recalibration</name>
-    <description>AATSR Recalibration</description>
+    <description>
+        This processor provides a recalibration (i.e., a drift correction) of AATSR L1b data.  
+    </description>
 
     <vendor>Brockmann Consult GmbH</vendor>
     <contactAddress>

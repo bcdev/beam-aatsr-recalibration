@@ -42,7 +42,7 @@ public class Recalibration {
         months.put("DEC", "12");
     }
 
-    public static final String DRIFT_TABLE_DEFAULT_FILE_NAME = "AATSR_VIS_DRIFT_V00-13.DAT";
+    public static final String DRIFT_TABLE_DEFAULT_FILE_NAME = "AATSR_VIS_DRIFT_V00-14.DAT";
     // make sure that the following value corresponds to the file above
     private static final int DRIFT_TABLE_MAX_LENGTH = 5000;
     private static final int DRIFT_TABLE_HEADER_LINES = 6;
