@@ -30,7 +30,7 @@ public class RecalibrateAATSRReflectancesDialog extends SingleTargetProductDialo
         private OperatorSpi operatorSpi;
 
         /**
-         * MepixSingleTargetProductDialog constructor
+         * RecalibrateAATSRReflectancesDialog constructor
          *
          * @param operatorName - operator name
          * @param appContext - application context
@@ -41,6 +41,7 @@ public class RecalibrateAATSRReflectancesDialog extends SingleTargetProductDialo
             super(appContext, title, helpID);
             this.operatorName = operatorName;
             this.targetProductNameSuffix = targetProductNameSuffix;
+            System.setProperty("aatsrRecalibrationMode", "GUI");
             initialize(operatorName, appContext);
         }
 

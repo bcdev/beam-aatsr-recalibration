@@ -1,5 +1,6 @@
 package org.esa.beam.aatsrrecalibration.operators;
 
+import org.esa.beam.aatsrrecalibration.util.RecalibrationUtils;
 import org.esa.beam.framework.gpf.OperatorException;
 
 import java.util.Calendar;
@@ -318,24 +319,27 @@ public class Recalibration {
         return getTimeInMillis(driftTable.getDate()[acquisitionTimeIndex+1]);
     }
 
-    protected void checkAcquisitionTimeRange(String acquisitionTime) throws OperatorException {
+    protected boolean checkAcquisitionTimeRange(String acquisitionTime) throws OperatorException {
         final String envisatLaunch = "01-MAR-2002 00:00:00";
 
         if (getTimeInMillis(acquisitionTime) < getTimeInMillis(envisatLaunch)) {
-            throw new OperatorException("ERROR: Acquisition time " + acquisitionTime + " before ENVISAT launch date.\n");
+            throw new OperatorException("ERROR in AATSR recalibration: Acquisition time " + acquisitionTime + " before ENVISAT launch date.\n");
         }
 
         String driftTableStartDate = driftTable.getDate()[0];
         if (getTimeInMillis(acquisitionTime) < getTimeInMillis(driftTableStartDate)) {
-            throw new OperatorException(
-                    "ERROR: Acquisition time " + acquisitionTime + " before start time of drift table.\n");
+            RecalibrationUtils.logInfoMessage
+                    ("AATSR recalibration: Acquisition time " + acquisitionTime + " before start time of drift table. No recalibration performed.\n");
+            return false;
         }
 
         String driftTableEndDate = driftTable.getDate()[driftTableLength - 1];
         if (getTimeInMillis(acquisitionTime) > getTimeInMillis(driftTableEndDate)) {
-            throw new OperatorException(
-                    "ERROR: Acquisition time " + acquisitionTime + " after last time of drift table.\n");
+            RecalibrationUtils.logInfoMessage
+                    ("AATSR recalibration: Acquisition time " + acquisitionTime + " after last time of drift table. No recalibration performed.\n");
+            return false;
         }
+        return true;
     }
 
     /**
