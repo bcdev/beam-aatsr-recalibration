@@ -41,7 +41,7 @@ public class RecalibrateAATSRReflectancesDialog extends SingleTargetProductDialo
             super(appContext, title, helpID);
             this.operatorName = operatorName;
             this.targetProductNameSuffix = targetProductNameSuffix;
-            System.setProperty("aatsrRecalibrationMode", "GUI");
+            System.setProperty("gpfMode", "GUI");
             initialize(operatorName, appContext);
         }
 
