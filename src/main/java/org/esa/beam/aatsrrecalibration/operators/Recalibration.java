@@ -303,7 +303,7 @@ public class Recalibration {
 
         for (int i = 0; i < driftTableLength; i++) {
             if (getTimeInMillis(acquisitionTime) < getTimeInMillis(driftTable.getDate()[i])) {
-                acquisitionTimeIndex = i;
+                acquisitionTimeIndex = i - 1;
                 break;
             }
         }
