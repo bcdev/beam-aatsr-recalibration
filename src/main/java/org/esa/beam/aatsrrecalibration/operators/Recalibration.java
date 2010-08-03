@@ -1,5 +1,6 @@
 package org.esa.beam.aatsrrecalibration.operators;
 
+import org.esa.beam.aatsrrecalibration.util.RecalibrationUtils;
 import org.esa.beam.framework.gpf.OperatorException;
 
 import java.util.Calendar;
@@ -42,7 +43,7 @@ public class Recalibration {
         months.put("DEC", "12");
     }
 
-    public static final String DRIFT_TABLE_DEFAULT_FILE_NAME = "AATSR_VIS_DRIFT_V00-13.DAT";
+    public static final String DRIFT_TABLE_DEFAULT_FILE_NAME = "AATSR_VIS_DRIFT_V00-14.DAT";
     // make sure that the following value corresponds to the file above
     private static final int DRIFT_TABLE_MAX_LENGTH = 5000;
     private static final int DRIFT_TABLE_HEADER_LINES = 6;
@@ -302,7 +303,7 @@ public class Recalibration {
 
         for (int i = 0; i < driftTableLength; i++) {
             if (getTimeInMillis(acquisitionTime) < getTimeInMillis(driftTable.getDate()[i])) {
-                acquisitionTimeIndex = i;
+                acquisitionTimeIndex = i - 1;
                 break;
             }
         }
@@ -318,24 +319,27 @@ public class Recalibration {
         return getTimeInMillis(driftTable.getDate()[acquisitionTimeIndex+1]);
     }
 
-    protected void checkAcquisitionTimeRange(String acquisitionTime) throws OperatorException {
+    protected boolean checkAcquisitionTimeRange(String acquisitionTime) throws OperatorException {
         final String envisatLaunch = "01-MAR-2002 00:00:00";
 
         if (getTimeInMillis(acquisitionTime) < getTimeInMillis(envisatLaunch)) {
-            throw new OperatorException("ERROR: Acquisition time " + acquisitionTime + " before ENVISAT launch date.\n");
+            throw new OperatorException("ERROR in AATSR recalibration: Acquisition time " + acquisitionTime + " before ENVISAT launch date.\n");
         }
 
         String driftTableStartDate = driftTable.getDate()[0];
         if (getTimeInMillis(acquisitionTime) < getTimeInMillis(driftTableStartDate)) {
-            throw new OperatorException(
-                    "ERROR: Acquisition time " + acquisitionTime + " before start time of drift table.\n");
+            org.esa.beam.aatsrrecalibration.util.RecalibrationUtils.logInfoMessage
+                    ("AATSR recalibration: Acquisition time " + acquisitionTime + " before start time of drift table. No recalibration performed.\n");
+            return false;
         }
 
         String driftTableEndDate = driftTable.getDate()[driftTableLength - 1];
         if (getTimeInMillis(acquisitionTime) > getTimeInMillis(driftTableEndDate)) {
-            throw new OperatorException(
-                    "ERROR: Acquisition time " + acquisitionTime + " after last time of drift table.\n");
+            org.esa.beam.aatsrrecalibration.util.RecalibrationUtils.logInfoMessage
+                    ("AATSR recalibration: Acquisition time " + acquisitionTime + " after last time of drift table. No recalibration performed.\n");
+            return false;
         }
+        return true;
     }
 
     /**

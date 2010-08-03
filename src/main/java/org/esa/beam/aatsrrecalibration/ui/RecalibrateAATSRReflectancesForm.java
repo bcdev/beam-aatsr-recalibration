@@ -89,7 +89,9 @@ public class RecalibrateAATSRReflectancesForm extends JTabbedPane {
             public void selectionChanged(SelectionChangeEvent event) {
                 final Product selectedProduct = (Product) event.getSelection().getSelectedValue();
                 final TargetProductSelectorModel targetProductSelectorModel = targetProductSelector.getModel();
-                targetProductSelectorModel.setProductName(selectedProduct.getName() + targetProductNameSuffix);
+                if (selectedProduct != null) {
+                    targetProductSelectorModel.setProductName(selectedProduct.getName() + targetProductNameSuffix);
+                }
             }
             @Override
             public void selectionContextChanged(SelectionChangeEvent event) {

@@ -84,4 +84,29 @@ public class RecalibrateAATSRReflectancesTest extends TestCase {
         assertEquals(true, reflIn-reflOut > 0.0);
         assertEquals(true, reflIn-reflOut < 2.0);
     }
+
+    public void testGetAcquisitionTimeIndex() {
+        String timestring = "01-FEB-2002 00:00:00";
+        assertEquals(-1, objectUnderTest.getAcquisitionTimeIndex(timestring));
+
+        timestring = "04-MAR-2002 00:00:00";
+        assertEquals(3, objectUnderTest.getAcquisitionTimeIndex(timestring));
+
+        timestring = "04-MAR-2002 03:00:00";
+        assertEquals(3, objectUnderTest.getAcquisitionTimeIndex(timestring));
+
+        timestring = "03-APR-2002 07:34:45";
+        assertEquals(33, objectUnderTest.getAcquisitionTimeIndex(timestring));
+
+        timestring = "01-AUG-2010 10:00:00";
+        assertEquals(-1, objectUnderTest.getAcquisitionTimeIndex(timestring));
+
+        final int actual;
+        try {
+            timestring = "bla";
+            actual = objectUnderTest.getAcquisitionTimeIndex(timestring);
+        } catch (StringIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+    }
 }
