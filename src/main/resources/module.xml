@@ -3,7 +3,7 @@
     <symbolicName>beam-aatsr-recalibration</symbolicName>
     <version>1.1.2</version>
     <name>AATSR Recalibration</name>
-    <description>AATSR Recalibration</description>
+    <description>This module comprises a processor for AATSR Recalibration.</description>
 
     <vendor>Brockmann Consult GmbH</vendor>
     <contactAddress>
