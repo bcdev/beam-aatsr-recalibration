@@ -13,8 +13,8 @@
 
             <p>Documentation:</p>
             <ul>
-                <li><a href="http://www.brockmann-consult.de/beam-wiki/download/attachments/51970061/Smith_et_al.pdf?version=1&modificationDate=1276165817360">Calibration Status of AATSR and MERIS Reflectance Channels (workshop presentation)</a></li>
-                <li><a href="http://www.brockmann-consult.de/beam-wiki/download/attachments/51970061/aatsrrecal-sum.pdf?version=1&modificationDate=1276174333704">Software User Manual (SUM)</a></li>
+                <li><a href="http://github.com/downloads/bcdev/beam-aatsr-recalibration/Calibration%20Status%20of%20AATSR%20and%20MERIS%20Reflectance%20Channels%20(workshop%20presentation).pdf">Calibration Status of AATSR and MERIS Reflectance Channels (workshop presentation)</a></li>
+                <li><a href="http://github.com/downloads/bcdev/beam-aatsr-recalibration/aatsrrecal-sum.pdf">Software User Manual (SUM)</a></li>
             </ul>
         ]]>
     </description>
