@@ -41,7 +41,7 @@ import java.io.File;
  * @version $Revision: 5849 $ $Date: 2009-07-02 15:07:05 +0200 (Do, 02 Jul 2009) $
  */
 @OperatorMetadata(alias = "recalibrateAATSRReflectances",
-                  version = "1.0-SNAPSHOT",
+                  version = "1.1.2",
                   authors = "Ralf Quast, Olaf Danne",
                   copyright = "(c) 2008 by Brockmann Consult",
                   description = "Recalibrate AATSR Reflectances.")
