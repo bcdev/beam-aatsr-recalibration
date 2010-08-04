@@ -3,7 +3,21 @@
     <symbolicName>beam-aatsr-recalibration</symbolicName>
     <version>1.1.2</version>
     <name>AATSR Recalibration</name>
-    <description>This module comprises a processor for AATSR Recalibration.</description>
+    <description>
+        <![CDATA[
+            <p>The purpose of the AATSR Recalibration processor is to perform appropriate nonlinearity and drift
+            corrections on AATSR L1b products.</p>
+
+            <p>Algorithm: D. Smith from Rutherford Appleton Laboratory, UK</p>
+            <p>Software: O.Danne, Brockmann Consult</p>
+
+            <p>Documentation:</p>
+            <ul>
+                <li><a href="http://www.brockmann-consult.de/beam-wiki/download/attachments/51970061/Smith_et_al.pdf?version=1&modificationDate=1276165817360">Calibration Status of AATSR and MERIS Reflectance Channels (workshop presentation)</a></li>
+                <li><a href="http://www.brockmann-consult.de/beam-wiki/download/attachments/51970061/aatsrrecal-sum.pdf?version=1&modificationDate=1276174333704">Software User Manual (SUM)</a></li>
+            </ul>
+        ]]>
+    </description>
 
     <vendor>Brockmann Consult GmbH</vendor>
     <contactAddress>
