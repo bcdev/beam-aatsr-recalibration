@@ -43,7 +43,7 @@ public class Recalibration {
         months.put("DEC", "12");
     }
 
-    public static final String DRIFT_TABLE_DEFAULT_FILE_NAME = "AATSR_VIS_DRIFT_V00-14.DAT";
+    public static final String DRIFT_TABLE_DEFAULT_FILE_NAME = "AATSR_VIS_DRIFT_V00-17.DAT";
     // make sure that the following value corresponds to the file above
     private static final int DRIFT_TABLE_MAX_LENGTH = 5000;
     private static final int DRIFT_TABLE_HEADER_LINES = 6;
@@ -213,8 +213,16 @@ public class Recalibration {
         String refTime = day + '-' + month + '-' + year + ' ' + hour + ':' + mins + ':' + secs;
 
         int correctionIndex;
+        
         // Now Identify Which Correction Has Been Applied
-        if (getTimeInMillis(refTime) < getTimeInMillis("29-NOV-2005 13:20:26")) {
+//      MODIFICATION:  (DS, 14-July-2010) - Following a system crash on 4th April 2010 - All VC1 files generated over the period
+//      between 04-April-2010 and 12-July-2010 inclusive did NOT contain any drift correction - hence this function was
+//      incorrectly removing the corrections.  A fix has been implemented to perform no modification to L1b reflectances
+//      where VC1 files generated during that period.
+
+        if (getTimeInMillis(refTime) < getTimeInMillis("29-NOV-2005 13:20:26") ||
+                (getTimeInMillis(refTime) >= getTimeInMillis("04-APR-2010 00:00:00") &&
+                 getTimeInMillis(refTime) <  getTimeInMillis("13-JUL-2010 00:00:00"))) {
             correctionIndex = 0; // No Correction is Applied
         } else if (getTimeInMillis(refTime) >= getTimeInMillis("29-NOV-2005 13:20:26") &&
                 getTimeInMillis(refTime) < getTimeInMillis("18-DEC-2006 20:14:15")) {
@@ -329,14 +337,16 @@ public class Recalibration {
         String driftTableStartDate = driftTable.getDate()[0];
         if (getTimeInMillis(acquisitionTime) < getTimeInMillis(driftTableStartDate)) {
             org.esa.beam.aatsrrecalibration.util.RecalibrationUtils.logInfoMessage
-                    ("AATSR recalibration: Acquisition time " + acquisitionTime + " before start time of drift table. No recalibration performed.\n");
+                    ("AATSR recalibration: Acquisition time " + acquisitionTime +
+                     " before start time of drift table. No recalibration performed, original data will be written to target product.\n");
             return false;
         }
 
         String driftTableEndDate = driftTable.getDate()[driftTableLength - 1];
         if (getTimeInMillis(acquisitionTime) > getTimeInMillis(driftTableEndDate)) {
             org.esa.beam.aatsrrecalibration.util.RecalibrationUtils.logInfoMessage
-                    ("AATSR recalibration: Acquisition time " + acquisitionTime + " after last time of drift table. No recalibration performed.\n");
+                    ("AATSR recalibration: Acquisition time " + acquisitionTime +
+                     " after last time of drift table. No recalibration performed, original data will be written to target product.\n");
             return false;
         }
         return true;

@@ -36,6 +36,22 @@ public class RecalibrateAATSRReflectancesTest extends TestCase {
         otherFilename = "ATS_VC1_AXVIEC20040103_043326_20040101_062207_20080612_062207";
         index = objectUnderTest.getRemoveDriftCorrectionIndex(otherFilename);
         assertEquals(0, index);
+
+        otherFilename = "ATS_VC1_AXVIEC20100412_043413_20100410_000100_20100417_000100";
+        index = objectUnderTest.getRemoveDriftCorrectionIndex(otherFilename);
+        assertEquals(0, index);
+
+        otherFilename = "ATS_VC1_AXVIEC20100701_134433_20100628_065615_20100705_065615";
+        index = objectUnderTest.getRemoveDriftCorrectionIndex(otherFilename);
+        assertEquals(0, index);
+
+        otherFilename = "ATS_VC1_AXVIEC20100726_083523_20100721_102646_20100721_134806";
+        index = objectUnderTest.getRemoveDriftCorrectionIndex(otherFilename);
+        assertEquals(2, index);
+
+        otherFilename = "ATS_VC1_AXVIEC20100804_014039_20100801_173259_2010808_173259";
+        index = objectUnderTest.getRemoveDriftCorrectionIndex(otherFilename);
+        assertEquals(2, index);
     }
 
     public void testGetV16NonlinearityCorrectedReflectance() {

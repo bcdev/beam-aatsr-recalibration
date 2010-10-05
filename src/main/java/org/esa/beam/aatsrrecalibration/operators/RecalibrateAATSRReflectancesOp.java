@@ -111,6 +111,7 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
 
     private Recalibration recalibration;
     private boolean isRecalibrated;
+    private boolean acquisitionTimeInRange;
 
     @Override
     public void initialize() throws OperatorException {
@@ -132,7 +133,7 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
 
         sensingStart = sourceProduct.getMetadataRoot()
                 .getElement("MPH").getAttribute("SENSING_START").getData().getElemString().substring(0, 20);
-        recalibration.checkAcquisitionTimeRange(sensingStart);
+        acquisitionTimeInRange = recalibration.checkAcquisitionTimeRange(sensingStart);
     }
 
     /**
@@ -263,7 +264,7 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
                     }
                     pm.worked(1);
                 }
-            } else if (!isRecalibrated && isTargetBandSelected(targetBand) && isTargetBandValid(targetBand)) {
+            } else if (!isRecalibrated && acquisitionTimeInRange && isTargetBandSelected(targetBand) && isTargetBandValid(targetBand)) {
                 // apply recalibration
 
 //				Tile isInvalid = getSourceTile(invalidBand, rectangle, pm); // TODO if necessary
