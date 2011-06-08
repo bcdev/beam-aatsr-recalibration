@@ -46,6 +46,7 @@ import java.io.File;
                   copyright = "(c) 2008 by Brockmann Consult",
                   description = "Recalibrate AATSR Reflectances.")
 public class RecalibrateAATSRReflectancesOp extends Operator {
+
     @SourceProduct(alias = "source",
                    label = "Name (AATSR L1b product)",
                    description = "Select an AATSR L1b product.")
@@ -149,8 +150,9 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
 
         // loop over bands and create them
         for (Band band : sourceProduct.getBands()) {
-            if (!band.isFlagBand())
+            if (!band.isFlagBand()) {
                 ProductUtils.copyBand(band.getName(), sourceProduct, targetProduct);
+            }
         }
         ProductUtils.copyTiePointGrids(sourceProduct, targetProduct);
         ProductUtils.copyGeoCoding(sourceProduct, targetProduct);
@@ -159,8 +161,8 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
 
         MetadataElement mphSource = sourceProduct.getMetadataRoot().getElement("MPH");
         isRecalibrated = (mphSource.getAttribute("RECALIBRATED") != null &&
-                mphSource.getAttributeString("RECALIBRATED") != null &&
-                mphSource.getAttributeString("RECALIBRATED").equals("YES"));
+                          mphSource.getAttributeString("RECALIBRATED") != null &&
+                          mphSource.getAttributeString("RECALIBRATED").equals("YES"));
 
 //        BandArithmeticOp bandArithmeticOp =
 //            BandArithmeticOp.createBooleanExpressionBand(INVALID_EXPRESSION, sourceProduct);
@@ -195,51 +197,51 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
 
     private static boolean isTargetBandValid(Band targetBand) {
         return targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_1600_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0870_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0670_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0550_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_1600_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0870_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0670_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0550_BAND_NAME);
+               targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0870_BAND_NAME) ||
+               targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0670_BAND_NAME) ||
+               targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0550_BAND_NAME) ||
+               targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_1600_BAND_NAME) ||
+               targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0870_BAND_NAME) ||
+               targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0670_BAND_NAME) ||
+               targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0550_BAND_NAME);
     }
 
     private boolean isTargetBandSelected(Band targetBand) {
         return (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_1600_BAND_NAME) &&
                 recalibrateNadir1600) ||
-                (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0870_BAND_NAME) &&
-                        recalibrateNadir0870) ||
-                (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0670_BAND_NAME) &&
-                        recalibrateNadir0670) ||
-                (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0550_BAND_NAME) &&
-                        recalibrateNadir0550) ||
-                (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_1600_BAND_NAME) &&
-                        recalibrateFward1600) ||
-                (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0870_BAND_NAME) &&
-                        recalibrateFward0870) ||
-                (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0670_BAND_NAME) &&
-                        recalibrateFward0670) ||
-                (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0550_BAND_NAME) &&
-                        recalibrateFward0550);
+               (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0870_BAND_NAME) &&
+                recalibrateNadir0870) ||
+               (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0670_BAND_NAME) &&
+                recalibrateNadir0670) ||
+               (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0550_BAND_NAME) &&
+                recalibrateNadir0550) ||
+               (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_1600_BAND_NAME) &&
+                recalibrateFward1600) ||
+               (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0870_BAND_NAME) &&
+                recalibrateFward0870) ||
+               (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0670_BAND_NAME) &&
+                recalibrateFward0670) ||
+               (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0550_BAND_NAME) &&
+                recalibrateFward0550);
     }
 
     private static int getChannelIndex(Band targetBand) {
         int channelIndex = -1;
 
         if (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0550_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0550_BAND_NAME)) {
+            targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0550_BAND_NAME)) {
             channelIndex = Recalibration.CHANNEL550;
         }
         if (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0670_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0670_BAND_NAME)) {
+            targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0670_BAND_NAME)) {
             channelIndex = Recalibration.CHANNEL670;
         }
         if (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_0870_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0870_BAND_NAME)) {
+            targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_0870_BAND_NAME)) {
             channelIndex = Recalibration.CHANNEL870;
         }
         if (targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_NADIR_1600_BAND_NAME) ||
-                targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_1600_BAND_NAME)) {
+            targetBand.getName().equals(EnvisatConstants.AATSR_L1B_REFLEC_FWARD_1600_BAND_NAME)) {
             channelIndex = Recalibration.CHANNEL1600;
         }
 
@@ -253,7 +255,7 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
 
         pm.beginTask("Processing frame...", rectangle.height);
         try {
-            Tile sourceTile = getSourceTile(sourceProduct.getBand(targetBand.getName()), rectangle, pm);
+            Tile sourceTile = getSourceTile(sourceProduct.getBand(targetBand.getName()), rectangle);
             if (targetBand.isFlagBand()) {
                 for (int y = rectangle.y; y < rectangle.y + rectangle.height; y++) {
                     for (int x = rectangle.x; x < rectangle.x + rectangle.width; x++) {
@@ -264,7 +266,8 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
                     }
                     pm.worked(1);
                 }
-            } else if (!isRecalibrated && acquisitionTimeInRange && isTargetBandSelected(targetBand) && isTargetBandValid(targetBand)) {
+            } else if (!isRecalibrated && acquisitionTimeInRange && isTargetBandSelected(
+                    targetBand) && isTargetBandValid(targetBand)) {
                 // apply recalibration
 
 //				Tile isInvalid = getSourceTile(invalidBand, rectangle, pm); // TODO if necessary
@@ -285,8 +288,9 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
                 int iChannel = getChannelIndex(targetBand);
 
                 // acquisition time difference in days
-                double acquisitionTimeDiff = (recalibration.getTimeInMillis(sensingStart) - recalibration.getTimeInMillis(
-                        envisatLaunch)) / (1.E3 * SECONDS_PER_DAY);
+                double acquisitionTimeDiff = (recalibration.getTimeInMillis(
+                        sensingStart) - recalibration.getTimeInMillis(
+                        envisatLaunch)) / (1.0E3 * SECONDS_PER_DAY);
 
                 for (int y = rectangle.y; y < rectangle.y + rectangle.height; y++) {
                     for (int x = rectangle.x; x < rectangle.x + rectangle.width; x++) {
@@ -302,15 +306,20 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
                         // Correct for nonlinearity
                         double reflectanceCorrected1 = reflectance;
                         if (iChannel == Recalibration.CHANNEL1600) {
-                            reflectanceCorrected1 = recalibration.getV16NonlinearityCorrectedReflectance(gc1Filename, reflectance);
+                            reflectanceCorrected1 = recalibration.getV16NonlinearityCorrectedReflectance(gc1Filename,
+                                                                                                         reflectance);
                         }
                         // Remove existing long term drift
-                        double reflectanceCorrected2 = recalibration.removeDriftCorrection(iChannel, removeDriftCorrIndex,
-                                                                                           acquisitionTimeDiff, reflectanceCorrected1);
+                        double reflectanceCorrected2 = recalibration.removeDriftCorrection(iChannel,
+                                                                                           removeDriftCorrIndex,
+                                                                                           acquisitionTimeDiff,
+                                                                                           reflectanceCorrected1);
 
                         // Apply new long term drift corrections
-                        double reflectanceCorrectedAll = recalibration.applyDriftCorrection(sensingStartMillis, ati, atiPrev, atiNext,
-                                                                                            iChannel, reflectanceCorrected2);
+                        double reflectanceCorrectedAll = recalibration.applyDriftCorrection(sensingStartMillis, ati,
+                                                                                            atiPrev, atiNext,
+                                                                                            iChannel,
+                                                                                            reflectanceCorrected2);
 
                         targetTile.setSample(x, y, reflectanceCorrectedAll);
                     }
@@ -346,6 +355,7 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
 
 
     public static class Spi extends OperatorSpi {
+
         public Spi() {
             super(RecalibrateAATSRReflectancesOp.class);
         }
