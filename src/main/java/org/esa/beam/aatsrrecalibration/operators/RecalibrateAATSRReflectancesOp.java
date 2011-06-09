@@ -41,7 +41,7 @@ import java.io.File;
  * @version $Revision: 5849 $ $Date: 2009-07-02 15:07:05 +0200 (Do, 02 Jul 2009) $
  */
 @OperatorMetadata(alias = "recalibrateAATSRReflectances",
-                  version = "1.1.2",
+                  version = "1.2.1",
                   authors = "Ralf Quast, Olaf Danne",
                   copyright = "(c) 2008 by Brockmann Consult",
                   description = "Recalibrate AATSR Reflectances.")
@@ -158,6 +158,7 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
         ProductUtils.copyGeoCoding(sourceProduct, targetProduct);
         ProductUtils.copyMetadata(sourceProduct, targetProduct);
         setFlagBands();
+        ProductUtils.copyMasks(sourceProduct, targetProduct);
 
         MetadataElement mphSource = sourceProduct.getMetadataRoot().getElement("MPH");
         isRecalibrated = (mphSource.getAttribute("RECALIBRATED") != null &&
