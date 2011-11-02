@@ -157,6 +157,8 @@ public class RecalibrateAATSRReflectancesOp extends Operator {
         ProductUtils.copyTiePointGrids(sourceProduct, targetProduct);
         ProductUtils.copyGeoCoding(sourceProduct, targetProduct);
         ProductUtils.copyMetadata(sourceProduct, targetProduct);
+        targetProduct.setStartTime(sourceProduct.getStartTime());
+        targetProduct.setEndTime(sourceProduct.getEndTime());
         setFlagBands();
         ProductUtils.copyMasks(sourceProduct, targetProduct);
 
