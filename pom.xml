@@ -60,8 +60,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <beam.version>4.9</beam.version>
-        <ceres.version>0.12</ceres.version>
+        <beam.version>4.10</beam.version>
+        <ceres.version>0.13</ceres.version>
     </properties>
     <dependencies>
         <dependency>
@@ -102,12 +102,12 @@
         <dependency>
             <groupId>org.esa.beam</groupId>
             <artifactId>beam-envisat-reader</artifactId>
-            <version>1.4</version>
+            <version>1.5</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.1</version>
+            <version>4.8.2</version>
         </dependency>
     </dependencies>
 
