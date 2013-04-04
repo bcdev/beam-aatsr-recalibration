@@ -7,7 +7,7 @@
     <name>AATSR-Recalibration</name>
     <groupId>org.esa.beam.aatsr-recalibration</groupId>
     <artifactId>beam-aatsr-recalibration</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
 
     <packaging>jar</packaging>
 
@@ -60,8 +60,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <beam.version>4.10</beam.version>
-        <ceres.version>0.13</ceres.version>
+        <beam.version>4.11</beam.version>
+        <ceres.version>0.13.2</ceres.version>
     </properties>
     <dependencies>
         <dependency>
@@ -102,12 +102,12 @@
         <dependency>
             <groupId>org.esa.beam</groupId>
             <artifactId>beam-envisat-reader</artifactId>
-            <version>1.5</version>
+            <version>1.5.2</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.2</version>
+            <version>4.11</version>
         </dependency>
     </dependencies>
 
