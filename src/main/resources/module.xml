@@ -1,7 +1,7 @@
 <module>
     <manifestVersion>1.0.0</manifestVersion>
     <symbolicName>beam-aatsr-recalibration</symbolicName>
-    <version>1.2.4</version>
+    <version>1.2.5</version>
     <name>AATSR Recalibration</name>
     <description>
         <![CDATA[
@@ -29,8 +29,10 @@
 
     <changelog>
         <![CDATA[
-         <p>From 1.2.3 to 1.2.4:<br/>
-          - adaptations for BEAM 5<br/>
+         <p>From 1.2.4 to 1.2.5:<br/>
+          - increased BEAM version to 5.0<br/>
+          <p>From 1.2.3 to 1.2.4:<br/>
+          - adaptations for BEAM 5 (snapshot)<br/>
          <p>From 1.2.2 to 1.2.3:<br/>
           - change dependency from BEAM 4.10 to BEAM 4.11<br/>
           - change dependency from CERES 0.13 to CERES 0.13.2<br/>
